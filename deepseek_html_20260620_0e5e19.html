@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>جهاد اکبر | سایت جامع آموزشی</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+        /* ---------- reset & base ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f9fbfd;
+            color: #1e2a3a;
+            line-height: 1.7;
+            direction: rtl;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        /* ---------- header & nav ---------- */
+        .header {
+            background: #0b1f33;
+            color: #fff;
+            padding: 0 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            min-height: 70px;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        .logo i {
+            color: #e8b83a;
+            margin-left: 8px;
+        }
+        .nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 20px;
+        }
+        .nav a {
+            padding: 8px 14px;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: 0.3s;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .nav a i {
+            font-size: 1.1rem;
+        }
+        .nav a:hover,
+        .nav a.active {
+            background: #e8b83a;
+            color: #0b1f33;
+        }
+        .nav a.active {
+            background: #e8b83a;
+            color: #0b1f33;
+        }
+        /* ---------- main container ---------- */
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        /* ---------- pages (hidden by default) ---------- */
+        .page {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        .page.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        /* ---------- hero (صفحه اصلی) ---------- */
+        .hero {
+            background: linear-gradient(135deg, #0b1f33 0%, #1d3b5a 100%);
+            color: #fff;
+            border-radius: 30px;
+            padding: 60px 40px;
+            margin-bottom: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: "جهاد اکبر";
+            position: absolute;
+            left: -30px;
+            bottom: -30px;
+            font-size: 12rem;
+            font-weight: 900;
+            color: rgba(255,255,255,0.04);
+            white-space: nowrap;
+            pointer-events: none;
+        }
+        .hero-text {
+            flex: 1 1 300px;
+            z-index: 1;
+        }
+        .hero-text h1 {
+            font-size: 3.2rem;
+            margin-bottom: 10px;
+        }
+        .hero-text h1 i {
+            color: #e8b83a;
+        }
+        .hero-text p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 550px;
+        }
+        .hero-btn {
+            margin-top: 25px;
+            display: inline-block;
+            background: #e8b83a;
+            color: #0b1f33;
+            padding: 14px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: 0.3s;
+            box-shadow: 0 8px 25px rgba(232, 184, 58, 0.3);
+        }
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(232, 184, 58, 0.5);
+        }
+        .hero-img {
+            flex: 1 1 200px;
+            text-align: center;
+            z-index: 1;
+        }
+        .hero-img i {
+            font-size: 10rem;
+            color: #e8b83a;
+            opacity: 0.8;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        /* ---------- cards ---------- */
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            border-right: 6px solid #e8b83a;
+            padding-right: 20px;
+            color: #0b1f33;
+        }
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+        .card {
+            background: #fff;
+            border-radius: 24px;
+            padding: 30px 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.3s;
+            border: 1px solid #eef3f9;
+            text-align: center;
+        }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
+            border-color: #e8b83a;
+        }
+        .card i {
+            font-size: 3rem;
+            color: #e8b83a;
+            background: #fdf6e3;
+            padding: 16px;
+            border-radius: 60px;
+            margin-bottom: 15px;
+        }
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+        .card p {
+            color: #3d5775;
+        }
+        /* ---------- about page ---------- */
+        .about-content {
+            background: #fff;
+            border-radius: 24px;
+            padding: 30px 35px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.03);
+        }
+        .about-content h3 {
+            color: #0b1f33;
+            margin: 20px 0 10px;
+        }
+        .about-content ul {
+            margin-right: 25px;
+        }
+        /* ---------- programs ---------- */
+        .program-block {
+            background: #fff;
+            border-radius: 24px;
+            padding: 25px 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            border-right: 6px solid #e8b83a;
+        }
+        .program-block h3 i {
+            color: #e8b83a;
+            margin-left: 10px;
+        }
+        /* ---------- gallery (نمایش آیکون‌ها) ---------- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        .gallery-item {
+            background: #fff;
+            border-radius: 20px;
+            padding: 25px 10px;
+            text-align: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+            transition: 0.3s;
+            border: 1px solid #eef3f9;
+        }
+        .gallery-item:hover {
+            border-color: #e8b83a;
+            transform: scale(1.03);
+        }
+        .gallery-item i {
+            font-size: 3.5rem;
+            color: #0b1f33;
+        }
+        .gallery-item span {
+            display: block;
+            margin-top: 10px;
+            font-weight: 500;
+            color: #1e3a5f;
+        }
+        /* ---------- contact ---------- */
+        .contact-box {
+            background: #fff;
+            border-radius: 24px;
+            padding: 30px 35px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.03);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        .contact-info {
+            flex: 1 1 250px;
+        }
+        .contact-info i {
+            color: #e8b83a;
+            width: 30px;
+        }
+        .contact-form {
+            flex: 2 1 300px;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 14px 18px;
+            margin-bottom: 15px;
+            border: 1px solid #dce5ef;
+            border-radius: 16px;
+            font-size: 1rem;
+            background: #f8faff;
+            transition: 0.3s;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: #e8b83a;
+            box-shadow: 0 0 0 4px rgba(232,184,58,0.15);
+        }
+        .contact-form button {
+            background: #0b1f33;
+            color: #fff;
+            padding: 14px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: 600;
+        }
+        .contact-form button:hover {
+            background: #e8b83a;
+            color: #0b1f33;
+        }
+        /* ---------- footer ---------- */
+        .footer {
+            background: #0b1f33;
+            color: #ccc;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+            border-radius: 30px 30px 0 0;
+        }
+        .footer i {
+            color: #e8b83a;
+            margin: 0 6px;
+        }
+        /* ---------- responsive ---------- */
+        @media (max-width: 700px) {
+            .header {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+                padding: 15px;
+            }
+            .nav {
+                justify-content: center;
+            }
+            .hero {
+                padding: 30px 20px;
+                text-align: center;
+            }
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            .hero-img i {
+                font-size: 5rem;
+            }
+            .section-title {
+                font-size: 1.6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="header">
+    <div class="logo">
+        <i class="fas fa-shield-alt"></i> جهاد اکبر
+    </div>
+    <nav class="nav" id="mainNav">
+        <a href="#" class="active" data-page="home"><i class="fas fa-home"></i> خانه</a>
+        <a href="#" data-page="about"><i class="fas fa-info-circle"></i> درباره</a>
+        <a href="#" data-page="programs"><i class="fas fa-book-open"></i> برنامه‌ها</a>
+        <a href="#" data-page="gallery"><i class="fas fa-images"></i> گالری</a>
+        <a href="#" data-page="contact"><i class="fas fa-envelope"></i> تماس</a>
+    </nav>
+</header>
+
+<!-- ========== MAIN ========== -->
+<div class="container">
+
+    <!-- ===== صفحه خانه ===== -->
+    <section id="page-home" class="page active">
+        <div class="hero">
+            <div class="hero-text">
+                <h1><i class="fas fa-flag"></i> جهاد اکبر</h1>
+                <p>اردوی آموزشی-تشکیلاتی با هدف رشد و تعالی فردی و جمعی دانشجویان. جهاد با نفس، مقدمه‌ی تحول در جامعه.</p>
+                <a href="#" class="hero-btn" data-page="about">بیشتر بدانید <i class="fas fa-arrow-left"></i></a>
+            </div>
+            <div class="hero-img">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+        </div>
+
+        <h2 class="section-title">محورهای اصلی</h2>
+        <div class="card-grid">
+            <div class="card">
+                <i class="fas fa-heart"></i>
+                <h3>خودسازی</h3>
+                <p>تقویت مبانی اعتقادی، اخلاقی و معنوی به عنوان سنگ‌بنای حرکت تشکیلاتی.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-users-cog"></i>
+                <h3>تشکیلاتی</h3>
+                <p>آموزش اصول مدیریت، برنامه‌ریزی و کار گروهی برای اثرگذاری بیشتر.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-handshake"></i>
+                <h3>انسجام</h3>
+                <p>ایجاد وحدت رویه و هم‌افزایی میان دانشجویان از سراسر کشور.</p>
+            </div>
+            <div class="card">
+                <i class="fas fa-rocket"></i>
+                <h3>تحول‌آفرینی</h3>
+                <p>توانمندسازی برای نقش‌آفرینی مؤثر در دانشگاه و عرصه‌های اجتماعی.</p>
+            </div>
+        </div>
+
+        <div style="background: #eef3f9; border-radius: 20px; padding: 25px; margin: 20px 0;">
+            <h3 style="display: flex; align-items: center; gap: 10px;"><i class="fas fa-calendar-alt" style="color:#e8b83a;"></i> زمان و مکان برگزاری</h3>
+            <p><strong>زمان:</strong> بهمن‌ماه (تعطیلات بین دو نیم‌سال) – حدوداً ۱۷ تا ۲۴ بهمن</p>
+            <p><strong>مکان:</strong> مشهد مقدس – جوار حرم مطهر رضوی</p>
+            <p><i class="fas fa-user-graduate" style="color:#e8b83a;"></i> <strong>مخاطب:</strong> دانشجویان عضو انجمن‌های اسلامی دانشجویان مستقل</p>
+        </div>
+    </section>
+
+    <!-- ===== صفحه درباره ===== -->
+    <section id="page-about" class="page">
+        <h2 class="section-title">درباره‌ی اردوی جهاد اکبر</h2>
+        <div class="about-content">
+            <p style="font-size:1.1rem;"><strong>«جهاد اکبر»</strong> به معنای جهاد با نفس و مبارزه با خواهش‌های درونی، تعبیری است که در روایات اسلامی به عنوان بزرگ‌ترین جهاد معرفی شده است. این مفهوم، بنیان‌گذار نگرشی است که در آن، خودسازی و تقویت مبانی فکری و معنوی، مقدمه هرگونه تحول و فعالیت مؤثر در عرصه اجتماع و سیاست دانسته می‌شود.</p>
+            <p>اردوی «جهاد اکبر» صرفاً یک گردهمایی نیست؛ بلکه نقطه‌ی شروع یک حرکت بزرگ و قیام دانشجویی برای تحول‌آفرینی در دانشگاه و جامعه است. این اردو که هر ساله توسط اتحادیه انجمن‌های اسلامی دانشجویان مستقل برگزار می‌شود، به عنوان یک فرایند تربیتی-آموزشی بلندمدت طراحی شده تا زمینه‌ساز رشد تشکیلاتی دانشجویان باشد.</p>
+
+            <h3><i class="fas fa-bullseye" style="color:#e8b83a;"></i> اهداف کلان</h3>
+            <ul>
+                <li><strong>خودسازی و تعالی فردی:</strong> تقویت معنویت، اخلاق و مبانی اندیشه‌ای.</li>
+                <li><strong>آشنایی با مبانی تشکیلاتی:</strong> تربیت نیروهای تازه‌نفس و آگاه به اصول کار گروهی.</li>
+                <li><strong>ایجاد وحدت رویه و انسجام:</strong> گرد هم آوردن دانشجویان از سراسر کشور.</li>
+                <li><strong>نقش‌آفرینی و تحول‌آفرینی:</strong> توانمندسازی دانشجویان برای تبدیل شدن به عناصر مؤثر.</li>
+            </ul>
+
+            <h3><i class="fas fa-tasks" style="color:#e8b83a;"></i> نتایج مورد انتظار</h3>
+            <ul>
+                <li>ارتقاء سطح معرفتی و بصیرتی دانشجویان.</li>
+                <li>افزایش انسجام و هویت تشکیلاتی میان اعضا.</li>
+                <li>ایجاد شبکه‌ای از نیروهای متعهد و کارآمد برای فعالیت در سطح دانشگاه و کشور.</li>
+                <li>آغاز یک فرایند تربیتی مستمر و بلندمدت (دوره ۴ ساله).</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ===== صفحه برنامه‌ها ===== -->
+    <section id="page-programs" class="page">
+        <h2 class="section-title">برنامه‌های آموزشی و تشکیلاتی</h2>
+        <p style="margin-bottom:25px;">برنامه‌های اردو در دو بخش اصلی «آموزشی» و «تشکیلاتی» طراحی شده‌اند.</p>
+
+        <div class="program-block">
+            <h3><i class="fas fa-chalkboard-teacher"></i> بخش آموزشی (ارتقای بینش)</h3>
+            <ul>
+                <li><strong>مبانی فکری و اعتقادی:</strong> کارگاه‌هایی پیرامون «رسالت انسان»، «ولایت فقیه» و «طرح کلی اندیشه اسلامی».</li>
+                <li><strong>مسائل روز:</strong> بررسی تحلیلی مسائل سیاسی، فرهنگی، اقتصادی و اجتماعی.</li>
+                <li><strong>حل مسئله (رویداد عملیاتی):</strong> رویکردی نوین که دانشجویان را از تئوری به عمل می‌رساند.</li>
+            </ul>
+        </div>
+
+        <div class="program-block">
+            <h3><i class="fas fa-users-gear"></i> بخش تشکیلاتی (ارتقای مهارت)</h3>
+            <ul>
+                <li><strong>کارگاه‌های مهارتی:</strong> آموزش مدیریت، برنامه‌ریزی، جذب نیرو، ارتباط مؤثر و ...</li>
+                <li><strong>جلسات چالشی و تعاملی:</strong> پرسش و پاسخ با مسئولان و شخصیت‌های فرهنگی و سیاسی.</li>
+                <li><strong>برنامه‌های فرهنگی و هم‌افزایی:</strong> همایش‌های جانبی با موضوعات اثرگذار.</li>
+            </ul>
+        </div>
+
+        <div style="background:#fff; border-radius:20px; padding:20px; border:1px dashed #e8b83a; margin-top:20px;">
+            <h4><i class="fas fa-clock" style="color:#e8b83a;"></i> زمان‌بندی کلی</h4>
+            <p>پیش‌نیاز: دوره مجازی مقدماتی (چند روز قبل از اردو) – اردوی حضوری به مدت یک هفته (۱۷ تا ۲۴ بهمن) – سپس شروع دوره‌ی تربیتی ۴ ساله.</p>
+        </div>
+    </section>
+
+    <!-- ===== صفحه گالری ===== -->
+    <section id="page-gallery" class="page">
+        <h2 class="section-title">گالری تصاویر و نمادها</h2>
+        <p>فضای اردو با نمادهای زیر تداعی می‌شود:</p>
+        <div class="gallery-grid">
+            <div class="gallery-item"><i class="fas fa-mosque"></i><span>حرم مطهر رضوی</span></div>
+            <div class="gallery-item"><i class="fas fa-users"></i><span>هم‌اندیشی دانشجویی</span></div>
+            <div class="gallery-item"><i class="fas fa-book"></i><span>مبانی اندیشه</span></div>
+            <div class="gallery-item"><i class="fas fa-lightbulb"></i><span>حل مسئله</span></div>
+            <div class="gallery-item"><i class="fas fa-hand-holding-heart"></i><span>خودسازی</span></div>
+            <div class="gallery-item"><i class="fas fa-flag-checkered"></i><span>پایان‌نامه‌ی اردو</span></div>
+        </div>
+        <p style="margin-top:20px;">(تصاویر واقعی در نسخه‌ی نهایی اضافه خواهند شد)</p>
+    </section>
+
+    <!-- ===== صفحه تماس ===== -->
+    <section id="page-contact" class="page">
+        <h2 class="section-title">تماس با ما</h2>
+        <div class="contact-box">
+            <div class="contact-info">
+                <p><i class="fas fa-map-marker-alt"></i> مشهد مقدس، دفتر اتحادیه</p>
+                <p><i class="fas fa-phone-alt"></i> ۰۵۱-۳۲۲۲-۴۴۴۴</p>
+                <p><i class="fas fa-envelope"></i> info@jihadakbar.ir</p>
+                <p><i class="fas fa-globe"></i> www.jihadakbar.ir</p>
+                <div style="margin-top:20px;">
+                    <span style="background:#e8b83a; padding:10px 20px; border-radius:40px; display:inline-block; color:#0b1f33; font-weight:bold;">دبیرخانه: شنبه تا چهارشنبه ۹ الی ۱۷</span>
+                </div>
+            </div>
+            <div class="contact-form">
+                <form onsubmit="alert('پیام شما با موفقیت ارسال شد (دمو)'); return false;">
+                    <input type="text" placeholder="نام و نام خانوادگی" required />
+                    <input type="email" placeholder="ایمیل" required />
+                    <input type="text" placeholder="موضوع" />
+                    <textarea rows="4" placeholder="پیام شما..." required></textarea>
+                    <button type="submit"><i class="fas fa-paper-plane"></i> ارسال پیام</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+    <p><i class="fas fa-flag"></i> اتحادیه انجمن‌های اسلامی دانشجویان مستقل – اردوی جهاد اکبر</p>
+    <p style="font-size:0.9rem; margin-top:5px;">طراحی شده با <i class="fas fa-heart" style="color:#e8b83a;"></i> برای رشد و تعالی تشکیلاتی</p>
+</footer>
+
+<!-- ========== SCRIPT NAVIGATION ========== -->
+<script>
+    (function() {
+        const navLinks = document.querySelectorAll('#mainNav a');
+        const pages = document.querySelectorAll('.page');
+
+        function showPage(pageId) {
+            pages.forEach(p => p.classList.remove('active'));
+            const target = document.getElementById('page-' + pageId);
+            if (target) target.classList.add('active');
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.page === pageId) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // کلیک روی منو
+        navLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const page = this.dataset.page;
+                if (page) {
+                    showPage(page);
+                    // آپدیت URL (اختیاری)
+                    history.pushState(null, '', '#' + page);
+                }
+            });
+        });
+
+        // کلیک روی دکمه‌های داخل صفحات که data-page دارند
+        document.querySelectorAll('[data-page]').forEach(el => {
+            if (el.tagName === 'A' && el.closest('.hero-btn')) {
+                // قبلاً مدیریت شده، ولی برای اطمینان دوباره
+                el.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const page = this.dataset.page;
+                    if (page) showPage(page);
+                });
+            }
+        });
+
+        // پشتیبانی از back/forward با hash
+        window.addEventListener('hashchange', function() {
+            const hash = location.hash.replace('#', '');
+            if (hash) {
+                const link = document.querySelector(`#mainNav a[data-page="${hash}"]`);
+                if (link) link.click();
+            }
+        });
+
+        // اگر در ابتدا هش داشت
+        if (location.hash) {
+            const hash = location.hash.replace('#', '');
+            const link = document.querySelector(`#mainNav a[data-page="${hash}"]`);
+            if (link) link.click();
+        } else {
+            // صفحه خانه پیش‌فرض
+            showPage('home');
+        }
+    })();
+</script>
+
+</body>
+</html>
